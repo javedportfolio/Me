@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Javed • Creativity Meets Teaching & Tech</title>
+
+  <!-- Tailwind (CDN for dev) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  "#F5F3FF",
+              100: "#EDE9FE",
+              200: "#DDD6FE",
+              300: "#C4B5FD",
+              400: "#A78BFA",
+              500: "#8B5CF6",
+              600: "#7C3AED",
+              700: "#6D28D9",
+              800: "#5B21B6",
+              900: "#4C1D95",
+            }
+          },
+          boxShadow: {
+            glow: "0 10px 30px rgba(139,92,246,.35)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Scroll-reveal baseline */
+    .reveal { opacity: 0; transform: translateY(24px) scale(.98); transition: all .8s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0) scale(1); }
+
+    /* Keyframe extras */
+    @keyframes floating {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .float { animation: floating 6s ease-in-out infinite; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 text-white">
+
+  <!-- ===== NAVBAR ===== -->
+ <header class="fixed inset-x-0 top-0 z-50">
+  <nav class="mx-auto max-w-7xl px-4 md:px-6">
+    <div class="mt-3 flex items-center justify-between rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl py-3 pl-4 pr-2 shadow-glow">
+      
+      <!-- Left: Logo + Brand -->
+      <div class="flex items-center space-x-2">
+        <img src="images/mylogo.png" alt="Logo" class="h-10 w-10 rounded-full object-cover">
+        <a href="#home" class="text-lg font-extrabold tracking-wide">
+          Javed<span class="text-purple-400">Portfolio</span>
+        </a>
+      </div>
+      
+      <!-- Right: Nav links (Desktop) -->
+      <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <a href="#about" class="flex items-center gap-2 hover:text-purple-400 transition">
+          <i data-lucide="user" class="w-4 h-4"></i> Who I Am
+        </a>
+        <a href="#skills" class="flex items-center gap-2 hover:text-purple-400 transition">
+          <i data-lucide="star" class="w-4 h-4"></i> My Abilities
+        </a>
+        <a href="#work" class="flex items-center gap-2 hover:text-purple-400 transition">
+          <i data-lucide="briefcase" class="w-4 h-4"></i> Crafted Work
+        </a>
+        <a href="#resume" class="flex items-center gap-2 hover:text-purple-400 transition">
+          <i data-lucide="file-text" class="w-4 h-4"></i> Resume Room
+        </a>
+        <a href="#frame" class="flex items-center gap-2 hover:text-purple-400 transition">
+          <i data-lucide="image" class="w-4 h-4"></i> In My Frame
+        </a>
+        <a href="#contact" class="flex items-center gap-2 hover:text-purple-400 transition">
+          <i data-lucide="phone" class="w-4 h-4"></i> Contact
+        </a>
+      </div>
+
+      <!-- Hamburger (Mobile) -->
+      <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/20 transition">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden mt-2 space-y-2 rounded-xl border border-white/15 bg-white/10 backdrop-blur-xl p-4 shadow-glow text-sm font-medium">
+      <a href="#about" class="flex items-center gap-2 hover:text-purple-400 transition">
+        <i data-lucide="user" class="w-4 h-4"></i> Who I Am
+      </a>
+      <a href="#skills" class="flex items-center gap-2 hover:text-purple-400 transition">
+        <i data-lucide="star" class="w-4 h-4"></i> My Abilities
+      </a>
+      <a href="#work" class="flex items-center gap-2 hover:text-purple-400 transition">
+        <i data-lucide="briefcase" class="w-4 h-4"></i> Crafted Work
+      </a>
+      <a href="#resume" class="flex items-center gap-2 hover:text-purple-400 transition">
+        <i data-lucide="file-text" class="w-4 h-4"></i> Resume Room
+      </a>
+      <a href="#frame" class="flex items-center gap-2 hover:text-purple-400 transition">
+        <i data-lucide="image" class="w-4 h-4"></i> In My Frame
+      </a>
+      <a href="#contact" class="flex items-center gap-2 hover:text-purple-400 transition">
+        <i data-lucide="phone" class="w-4 h-4"></i> Contact
+      </a>
+    </div>
+  </nav>
+</header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="pt-36 md:pt-40 pb-16">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Hi, I'm <span class="text-brand-300">Javed</span><br/>
+          <span class="text-brand-200">Creativity Meets Teaching & Tech</span>
+        </h1>
+        <p class="mt-4 text-white/80 max-w-xl">
+         Job-ready, skilled and professional about learning & teaching        </p>
+
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="#resume" class="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 font-semibold shadow-glow hover:bg-brand-600 transition">
+            <i data-lucide="download"></i> Download Resume
+          </a>
+          <a href="#work" class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-3 font-semibold hover:bg-white/10 transition">
+            <i data-lucide="briefcase"></i> View Work
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal flex justify-center">
+        <div class="relative">
+          <img src="profile.jpg" alt="Profile"
+               class="float h-60 w-60 md:h-72 md:w-72 rounded-full object-cover border-4 border-white/20 shadow-glow"/>
+          <div class="absolute -inset-3 rounded-full bg-brand-500/20 blur-2xl -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO I AM ===== -->
+  <section id="about" class="pb-6">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="reveal text-3xl md:text-4xl font-bold">Who I Am</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <!-- Journey -->
+        <article class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl hover:shadow-glow transition">
+          <h3 class="font-semibold text-brand-200">My Journey</h3>
+          <p class="mt-2 text-white/80 text-sm">
+            I am a dedicated educator and creative designer with expertise in combining teaching skills with digital tools. My journey started with a passion for teaching and evolved into integrating technology and creativity into education.
+
+          </p>
+        </article>
+        <!-- Education -->
+        <article class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl hover:shadow-glow transition">
+          <h3 class="font-semibold text-brand-200">Education</h3>
+          <ul class="mt-2 text-white/80 text-sm space-y-2">
+            <li>• Advanced Diploma in Computer Applications</li>
+            <li>• B.A (Bachelor of Arts )</li>
+            <li>• Ongoing: Modern Web Dev & UI and AI</li>
+          </ul>
+        </article>
+     <!-- Career Goals --> 
+        <article class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl hover:shadow-glow transition">
+          <h3 class="font-semibold text-brand-200">Career Goals</h3>
+          <p class="mt-2 text-white/80 text-sm">
+            To create innovative and interactive learning experiences using design and technology. My goal is to bridge the gap between education and technology to make learning more engaging and effective.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABILITIES ===== -->
+  <section id="skills" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="reveal text-3xl md:text-4xl font-bold text-center">My Abilities</h2>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-8">
+        <!-- Technical skills with bars -->
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+          <h3 class="font-semibold text-brand-200 mb-4">Technical Skills</h3>
+          <!-- bar -->
+          <div class="mb-4">
+            <div class="flex justify-between text-sm"><span>MS Excel (Advanced)</span><span>90%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[90%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+              <div class="mb-4">
+            <div class="flex justify-between text-sm"><span>illustrator</span><span>70%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[90%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+  <div class="mb-4">
+            <div class="flex justify-between text-sm"><span>InDesign</span><span>70%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[90%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+  <div class="mb-4">
+            <div class="flex justify-between text-sm"><span>Canva</span><span>70%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[90%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-sm"><span>PowerPoint</span><span>85%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[85%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-sm"><span>Photoshop</span><span>65%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[65%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm"><span>CorelDRAW</span><span>70%</span></div>
+            <div class="mt-1 h-2 rounded-full bg-white/10">
+              <div class="h-2 w-[70%] rounded-full bg-brand-400"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teaching skills -->
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+          <h3 class="font-semibold text-brand-200 mb-4">Teaching Skills</h3>
+          <ul class="space-y-2 text-sm text-white/85">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Humaities specialist </li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Lesson planning & assessment</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Blending tech with classroom</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Student engagement & mentoring</li>
+          </ul>
+        </div>
+
+        <!-- Soft skills -->
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+          <h3 class="font-semibold text-brand-200 mb-4">Soft Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Creativity</span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Leadership</span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Time Management </span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Problem Solving</span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Adaptability</span>
+            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Teamwork</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Crafted Work -->
+<section id="work" class="py-16">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <h2 class="text-3xl md:text-4xl font-bold">Crafted Work</h2>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Work Card 1 -->
+      <div onclick="openModal('https://picsum.photos/1000/600?1')" 
+           class="group cursor-pointer rounded-2xl overflow-hidden border border-white/15 bg-white/10 hover:shadow-xl transition">
+        <img src="https://picsum.photos/400/250?1" 
+             class="h-48 w-full object-cover group-hover:scale-105 transition"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Dashboard UI</h3>
+          <p class="text-sm text-white/80">Click to view fullscreen.</p>
+        </div>
+      </div>
+
+      <!-- Work Card 2 -->
+      <div onclick="openModal('https://picsum.photos/1000/600?2')" 
+           class="group cursor-pointer rounded-2xl overflow-hidden border border-white/15 bg-white/10 hover:shadow-xl transition">
+        <img src="https://picsum.photos/400/250?2" 
+             class="h-48 w-full object-cover group-hover:scale-105 transition"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Poster Design</h3>
+          <p class="text-sm text-white/80">Click to view fullscreen.</p>
+        </div>
+      </div>
+
+      <!-- Work Card 3 -->
+      <div onclick="openModal('https://picsum.photos/1000/600?3')" 
+           class="group cursor-pointer rounded-2xl overflow-hidden border border-white/15 bg-white/10 hover:shadow-xl transition">
+        <img src="https://picsum.photos/400/250?3" 
+             class="h-48 w-full object-cover group-hover:scale-105 transition"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Portfolio Website</h3>
+          <p class="text-sm text-white/80">Click to view fullscreen.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- View Showcase Button -->
+    <div class="mt-12 text-center">
+      <a href="#showcase" 
+         class="inline-block bg-purple-500 px-6 py-3 rounded-xl font-semibold hover:bg-purple-600 transition">
+        View Showcase
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ===== RESUME ROOM ===== -->
+  <section id="resume" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="reveal text-3xl md:text-4xl font-bold text-center">Resume Room</h2>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <!-- Experience -->
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+          <h3 class="font-semibold text-brand-200 mb-4">Experience</h3>
+          <div class="space-y-4 text-sm">
+            <div>
+              <div class="flex items-center justify-between">
+                <strong>Teacher & Designer</strong>
+                <span class="text-white/70">2023 — Present</span>
+              </div>
+              <p class="text-white/80">Created course visuals, taught MS Office & design tools, and built mini web projects.</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <strong>Freelance Designer</strong>
+                <span class="text-white/70">2025</span>
+              </div>
+              <p class="text-white/80">Logos, posters, certificates, and simple one-page sites for local institutes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+          <h3 class="font-semibold text-brand-200 mb-4">Education</h3>
+          <ul class="space-y-3 text-sm">
+            <li><strong>ADCA</strong> — Advanced Diploma in Computer Applications</li>
+            <li><strong>Graphic Tools:</strong> Photoshop, CorelDRAW, Canva</li>
+            <li><strong>B.A (present )</strong> History & political,</li>
+          </ul>
+
+          <a href="resume.pdf" class="mt-5 inline-flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2 font-semibold shadow-glow hover:bg-brand-600 transition">
+            <i data-lucide="download"></i> Download Full Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN MY FRAME (GALLERY) ===== -->
+<!-- In My Frame -->
+<section id="frame" class="py-16">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <h2 class="text-3xl md:text-4xl font-bold">In My Frame</h2>
+
+    <!-- Scrollable Gallery -->
+    <div class="mt-8 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+      <img src="https://picsum.photos/300/400?4" onclick="openModal(this.src)" 
+           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
+      <img src="https://picsum.photos/300/400?5" onclick="openModal(this.src)" 
+           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
+      <img src="https://picsum.photos/300/400?6" onclick="openModal(this.src)" 
+           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
+      <img src="https://picsum.photos/300/400?7" onclick="openModal(this.src)" 
+           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
+      <img src="https://picsum.photos/300/400?8" onclick="openModal(this.src)" 
+           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
+    </div>
+  </div>
+</section>
+
+<!-- Fullscreen Modal -->
+<div id="imageModal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+  <span class="absolute top-5 right-8 text-white text-4xl cursor-pointer" onclick="closeModal()">&times;</span>
+  <img id="modalImage" src="" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg"/>
+</div>
+
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <h2 class="reveal text-3xl md:text-4xl font-bold text-center">Let’s Talk</h2>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- Illustration / map placeholder -->
+        <div class="reveal col-span-2 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl h-64 md:h-auto flex items-center justify-center">
+          <img src="contact.jpg" alt="Contact illustration" class="h-full w-full object-cover rounded-2xl opacity-80">
+        </div>
+
+        <!-- Contact info + form -->
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+          <h3 class="font-semibold text-brand-200 mb-4">Contact Information</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2"><i data-lucide="phone"><a href="tel:7683040561"></i> +91-7683040561</li></a>
+            <li class="flex items-center gap-2"><i data-lucide="mail"><a href="mailto:javed.portfoli.1@gamil.com"></i> javed.portfolio.1@gmail.com</li></a>
+            <li class="flex items-center gap-2"><i data-lucide="map-pin"></i> Delhi, India</li>
+          <div class="flex gap-4 mt-4">
+  <!-- WhatsApp -->
+  <div class="flex gap-4 mt-4">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917683040561" target="_blank" 
+     class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
+      <path d="M20.52 3.48A11.79 11.79 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.98L0 24l6.19-1.63A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 21.82c-2.08 0-4.09-.56-5.84-1.61l-.42-.25-3.67.97.98-3.58-.27-.43A9.82 9.82 0 0 1 2.18 12C2.18 6.62 6.62 2.18 12 2.18c2.63 0 5.1 1.02 6.95 2.86A9.78 9.78 0 0 1 21.82 12c0 5.38-4.44 9.82-9.82 9.82zm5.38-7.37c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.48s1.08 2.87 1.23 3.07c.15.2 2.12 3.25 5.14 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.08-.12-.28-.2-.58-.35z"/>
+    </svg>
+  </a>
+  <!-- Twitter -->
+  <a href="https://twitter.com/YOUR_USERNAME" target="_blank" 
+     class="flex items-center justify-center w-10 h-10 rounded-full bg-sky-500 hover:bg-sky-600 transition shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
+      <path d="M23.954 4.57c-.885.392-1.83.656-2.825.775a4.932 4.932 0 0 0 2.163-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482A13.978 13.978 0 0 1 1.671 3.149a4.92 4.92 0 0 0 1.524 6.574c-.8-.025-1.55-.246-2.21-.616v.061a4.926 4.926 0 0 0 3.946 4.827c-.417.113-.855.171-1.312.171-.32 0-.634-.03-.936-.086a4.935 4.935 0 0 0 4.604 3.42A9.868 9.868 0 0 1 .96 19.54a13.94 13.94 0 0 0 7.548 2.213c9.057 0 14.01-7.514 14.01-14.01 0-.213-.004-.425-.014-.637a10.012 10.012 0 0 0 2.45-2.537z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://instagram.com/YOUR_USERNAME" target="_blank" 
+     class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 hover:opacity-90 transition shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
+      <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.1 4.7.3 3.9.6c-.9.3-1.7.7-2.4 1.4C.8 2.6.3 3.4.1 4.3.1 5.1 0 6.1 0 7.4 0 8.7 0 9.1 0 12s0 3.3.1 4.6c.1 1.3.3 2.3.6 3.1.3.9.7 1.7 1.4 2.4.7.7 1.5 1.1 2.4 1.4.9.3 1.8.5 3.1.6 1.3.1 1.7.1 4.6.1s3.3 0 4.6-.1c1.3-.1 2.3-.3 3.1-.6.9-.3 1.7-.7 2.4-1.4.7-.7 1.1-1.5 1.4-2.4.3-.9.5-1.8.6-3.1.1-1.3.1-1.7.1-4.6s0-3.3-.1-4.6c-.1-1.3-.3-2.3-.6-3.1-.3-.9-.7-1.7-1.4-2.4C20.1.8 19.3.4 18.4.1c-.9-.3-1.8-.5-3.1-.6C13.3 0 12.9 0 12 0z"/>
+      <path d="M12 5.8A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.6a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/>
+    </svg>
+  </a>
+
+<!-- YouTube -->
+<a href="https://youtube.com/YOUR_CHANNEL" target="_blank"
+   class="flex items-center justify-center w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 transition shadow-lg">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
+    <path d="M23.498 6.186a2.97 2.97 0 0 0-2.09-2.103C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.408.583a2.97 2.97 0 0 0-2.09 2.103A31.65 31.65 0 0 0 0 12a31.65 31.65 0 0 0 .502 5.814 2.97 2.97 0 0 0 2.09 2.103C4.495 20.5 12 20.5 12 20.5s7.505 0 9.408-.583a2.97 2.97 0 0 0 2.09-2.103A31.65 31.65 0 0 0 24 12a31.65 31.65 0 0 0-.502-5.814zM9.75 15.02v-6.04L15.5 12l-5.75 3.02z"/>
+  </svg>
+</a>
+
+  <!-- LinkedIn -->
+  <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" 
+     class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 hover:bg-blue-800 transition shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
+      <path d="M20.45 20.45h-3.554v-5.357c0-1.278-.023-2.922-1.78-2.922-1.782 0-2.054 1.392-2.054 2.83v5.449H9.507V9h3.414v1.561h.047c.476-.9 1.637-1.848 3.37-1.848 3.604 0 4.27 2.372 4.27 5.455v6.287zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.11 20.45H3.563V9h3.548v11.45zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.207 24 24 23.226 24 22.271V1.729C24 .774 23.207 0 22.225 0z"/>
+    </svg>
+  </a>
+</div>
+          </ul>
+
+          <form id="contact-form" action="https://formspree.io/f/xrbaavwz" method="POST" class="mt-6 space-y-3">
+  <!-- Name -->
+  <input 
+    type="text" 
+    name="name" 
+    required
+    class="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-2 
+           placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand-400" 
+    placeholder="Your Name"/>
+
+  <!-- Email -->
+  <input 
+    type="email" 
+    name="email" 
+    required
+    class="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-2 
+           placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand-400" 
+    placeholder="Your Email"/>
+
+  <!-- Message -->
+  <textarea 
+    name="message" 
+    rows="4" 
+    required
+    class="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-2 
+           placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand-400" 
+    placeholder="Your Message"></textarea>
+
+  <!-- Submit -->
+  <button 
+    type="submit"
+    class="w-full rounded-xl bg-brand-500 px-4 py-2 font-semibold shadow-glow 
+           hover:bg-brand-600 transition">
+    Send Message
+  </button>
+
+  <!-- Success / Error messages -->
+  <p id="form-status" class="text-sm mt-2 text-center"></p>
+</form>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // default submit rok do
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        status.innerHTML = "✅ Thanks! Your message has been sent.";
+        status.className = "text-green-400 text-sm mt-2 text-center";
+        form.reset(); // form clear
+      } else {
+        status.innerHTML = "❌ Oops! Something went wrong.";
+        status.className = "text-red-400 text-sm mt-2 text-center";
+      }
+    } catch (error) {
+      status.innerHTML = "⚠️ Network error. Please try again.";
+      status.className = "text-yellow-400 text-sm mt-2 text-center";
+    }
+  });
+</script>        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
+      <p>© 2025 Javed Portfolio. All rights reserved.</p>
+      <div class="mt-3 md:mt-0 flex items-center gap-3">
+        <a href="#" class="hover:text-white">Privacy</a>
+        <span class="opacity-40">•</span>
+        <a href="#" class="hover:text-white">Terms</a>
+        <span class="opacity-40">•</span>
+        <a href="#" class="hover:text-white">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Icons
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Scroll-reveal with IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    function openModal(imgSrc) {
+    document.getElementById("modalImage").src = imgSrc;
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+  function closeModal() {
+    document.getElementById("imageModal").classList.add("hidden");
+  }
+</script>
+  </script>
+</body>
+</html>
