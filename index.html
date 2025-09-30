@@ -373,6 +373,50 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
+<!-- ===== IN MY FRAME (GALLERY) ===== -->
+  <section id="frame" class="py-16">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <h2 class="text-3xl md:text-4xl font-bold">In My Frame</h2>
+
+    <!-- Scrollable Gallery -->
+    <div class="mt-8 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+      
+      <!-- Card 1 -->
+      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
+        <img src="https://picsum.photos/300/400?4" 
+             onclick="openModal(this.src)" 
+             class="w-full h-full object-cover cursor-pointer"/>
+        <!-- Overlay Review -->
+        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
+          “Thank you Sir 🙏 Aapki mehnat se mera beta first aaya hai. Bahut khushi ho rahi hai ❤️”
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
+        <img src="https://picsum.photos/300/400?5" 
+             onclick="openModal(this.src)" 
+             class="w-full h-full object-cover cursor-pointer"/>
+        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
+          “Your teaching style is amazing ✨ I learned so much!”
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
+        <img src="https://picsum.photos/300/400?6" 
+             onclick="openModal(this.src)" 
+             class="w-full h-full object-cover cursor-pointer"/>
+        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
+          “Grateful to you 🙌 for guiding me in every step.”
+        </div>
+      </div>
+
+      <!-- Add more cards... -->
+
+    </div>
+  </div>
+  </section>
 
   <!-- ===== RESUME ROOM ===== -->
   <section id="resume" class="py-16">
@@ -417,27 +461,6 @@
       </div>
     </div>
   </section>
-  <!-- ===== IN MY FRAME (GALLERY) ===== -->
-<!-- In My Frame -->
-<section id="frame" class="py-16">
-  <div class="mx-auto max-w-7xl px-4 md:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold">In My Frame</h2>
-
-    <!-- Scrollable Gallery -->
-    <div class="mt-8 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
-      <img src="images/frame/frameone.png" onclick="openModal(this.src)" 
-           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
-      <img src="https://picsum.photos/300/400?5" onclick="openModal(this.src)" 
-           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
-      <img src="https://picsum.photos/300/400?6" onclick="openModal(this.src)" 
-           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
-      <img src="https://picsum.photos/300/400?7" onclick="openModal(this.src)" 
-           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
-      <img src="https://picsum.photos/300/400?8" onclick="openModal(this.src)" 
-           class="snap-center cursor-pointer flex-shrink-0 w-72 h-96 rounded-2xl object-cover border border-white/15 hover:shadow-xl transition"/>
-    </div>
-  </div>
-</section>
 
 <!-- Fullscreen Modal -->
 <div id="imageModal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
