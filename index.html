@@ -596,16 +596,23 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script>
-    // Icons
-    lucide.createIcons();
+  // Icons
+  lucide.createIcons();
 
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden'); // force close
     });
-
+  });
     // Scroll-reveal with IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
