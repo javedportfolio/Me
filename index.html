@@ -924,953 +924,1111 @@
         display: block;
       }
 
-      .h align-items: center;
-      margin-bottom: 1rem;
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.1rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .about-image {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .timeline {
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .skills-grid,
+      .portfolio-grid,
+      .video-grid,
+      .frame-carousel {
+        grid-template-columns: 1fr;
+      }
+
+      .resume-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+
+      .resume-stats {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .skill-card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
-      color: var(--text);
-    }
-
-    .skill-level {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 1.1rem;
-    }
-
-    .skill-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .skill-bar {
-      height: 8px;
-      background: #e0e0e0;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .skill-progress {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      border-radius: 10px;
-      transition: width 1s ease;
-      width: 0;
-    }
-
-    .skill-card.visible .skill-progress {
-      width: var(--progress);
-    }
-
-    /* Portfolio Section */
-    .portfolio-filters {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: 0.75rem 1.5rem;
-      background: var(--surface);
-      border: 2px solid #e0e0e0;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      color: var(--text);
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .portfolio-card {
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px var(--shadow);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-10px) rotateZ(-1deg);
-      box-shadow: 0 10px 30px var(--shadow-hover);
-    }
-
-    .portfolio-image {
-      width: 100%;
-      height: 250px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .portfolio-image::after {
-      content: '';
-      position: absolute;
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .portfolio-card:hover .portfolio-image::after {
-      opacity: 1;
-    }
-
-    .portfolio-info {
-      padding: 1.5rem;
-    }
-
-    .portfolio-tags {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      padding: 0.25rem 0.75rem;
-      background: rgba(247, 37, 133, 0.1);
-      color: var(--accent);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .portfolio-info h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .portfolio-info p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    /* Video Section */
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-
-    .video-card {
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px var(--shadow);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .video-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px var(--shadow-hover);
-    }
-
-    .video-thumbnail {
       width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      display: flex;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      display: none;
       align-items: center;
       justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      background: var(--surface);
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+      padding: 2rem;
       position: relative;
     }
 
-    .play-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.9);
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      cursor: pointer;
       font-size: 1.5rem;
-      color: var(--accent);
-      transition: all 0.3s ease;
-    }
-
-    .video-card:hover .play-icon {
-      transform: scale(1.1);
-      background: white;
-    }
-
-    .video-info {
-      padding: 1.5rem;
-    }
-
-    .video-info h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .video-info p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    /* Frame Section */
-    .frame-carousel {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .frame-card {
-      background: var(--surface);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px var(--shadow);
-      transition: all 0.3s ease;
-    }
-
-    .frame-card:hover {
-      transform: scale(1.05) rotateZ(2deg);
-      box-shadow: 0 8px 25px var(--shadow-hover);
-    }
-
-    .frame-image {
-      width: 100%;
-      height: 300px;
-      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
-    }
-
-    .frame-caption {
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      font-style: italic;
-    }
-
-    /* Resume Section */
-    .resume-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .resume-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px var(--shadow);
-      text-align: center;
       transition: all 0.3s ease;
     }
 
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px var(--shadow-hover);
+    .lightbox-close:hover {
+      transform: rotateZ(90deg);
     }
 
-    .stat-number {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      color: var(--text-secondary);
-      font-size: 1rem;
-    }
-
-    .resume-download {
-      background: var(--surface);
-      padding: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px var(--shadow);
-      text-align: center;
-    }
-
-    .resume-download h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    .resume-download p {
-      color: var(--text-secondary);
+    .lightbox-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
       margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
     }
 
-    .education-list {
-      text-align: left;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 2px solid #e0e0e0;
-    }
-
-    .education-list h4 {
+    .lightbox-content h2 {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--text);
     }
 
-    .education-item {
-      margin-bottom: 1rem;
-      padding: 1rem;
-      background: #f5f5f5;
-      border-radius: 8px;
-    }
-
-    .education-item strong {
-      color: var(--text);
-    }
-
-    .education-item span {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    /* Contact Section */
-    .contact-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .contact-info {
-      background: var(--surface);
-      padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px var(--shadow);
-    }
-
-    .contact-info h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    .contact-info p {
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-    }
-
-    .social-links {
+    .lightbox-meta {
       display: flex;
       gap: 1rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
     }
 
-    .social-btn {
-      width: 50px;
-      height: 50px;
-      background: var(--accent);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 1.3rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(247, 37, 133, 0.3);
-    }
-
-    .social-btn:hover {
-      transform: translateY(-5px) rotateZ(15deg);
-      box-shadow: 0 6px 20px rgba(247, 37, 133, 0.5);
-    }
-
-    .contact-form {
-      background: var(--surface);
-      padding: 2.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px var(--shadow);
-    }
-
-    .form-group {
+    .lightbox-content p {
+      color: var(--text-secondary);
+      line-height: 1.8;
       margin-bottom: 1.5rem;
     }
 
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
+    .lightbox-content h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+      color: var(--text);
+    }
+
+    .lightbox-tools {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-tag {
+      padding: 0.5rem 1rem;
+      background: rgba(247, 37, 133, 0.1);
+      color: var(--accent);
+      border-radius: 20px;
+      font-size: 0.9rem;
       font-weight: 600;
-      color: var(--text);
     }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.875rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--text);
-      color: white;
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 5rem;
-    }
-
-    footer p {
-      margin: 0;
-      opacity: 0.8;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100% - 70px);
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 2rem;
-        transition: left 0.3s ease;
-        z-index: 999;
-      }
-
-      .nav-links.active {
-        left: 0;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .h            </div>
-          </div>
-          <div class="mb-4">
-            <div class="flex justify-between text-sm"><span>PowerPoint</span><span>85%</span></div>
-            <div class="mt-1 h-2 rounded-full bg-white/10">
-              <div class="h-2 w-[85%] rounded-full bg-brand-400"></div>
-            </div>
-          </div>
-          <div class="mb-4">
-            <div class="flex justify-between text-sm"><span>Photoshop</span><span>65%</span></div>
-            <div class="mt-1 h-2 rounded-full bg-white/10">
-              <div class="h-2 w-[65%] rounded-full bg-brand-400"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-sm"><span>CorelDRAW</span><span>70%</span></div>
-            <div class="mt-1 h-2 rounded-full bg-white/10">
-              <div class="h-2 w-[70%] rounded-full bg-brand-400"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Teaching skills -->
-        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-          <h3 class="font-semibold text-brand-200 mb-4">Teaching Skills</h3>
-          <ul class="space-y-2 text-sm text-white/85">
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Humaities specialist </li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Lesson planning & assessment</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Blending tech with classroom</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="text-brand-300"></i> Student engagement & mentoring</li>
-          </ul>
-        </div>
-
-        <!-- Soft skills -->
-        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-          <h3 class="font-semibold text-brand-200 mb-4">Soft Skills</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Creativity</span>
-            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Leadership</span>
-            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Time Management </span>
-            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Problem Solving</span>
-            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Adaptability</span>
-            <span class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-sm">Teamwork</span>
-          </div>
-        </div>
-      </div>
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav id="nav">
+   <div class="container"><a href="images/mylogo" class="logo">
+     <div class="logo-icon">
+      K
+     </div><span id="nav-name">Javed</span> </a>
+    <ul class="nav-links" id="navLinks">
+     <li><a href="#about">About</a></li>
+     <li><a href="#skills">Skills</a></li>
+     <li><a href="#portfolio">Work</a></li>
+     <li><a href="#videos">Videos</a></li>
+     <li><a href="#resume">Resume</a></li>
+     <li><a href="#contact">Contact</a></li>
+    </ul><button class="menu-toggle" id="menuToggle">☰</button>
+   </div>
+  </nav><!-- Hero Section -->
+  <section class="hero" id="home">
+   <div class="hero-bg" id="heroBg"></div>
+   <div class="hero-content">
+    <div class="container">
+     <p class="hero-greeting">Hello, I'm</p>
+     <h1 class="hero-title" id="heroName">Javed</h1>
+     <p class="hero-tagline" id="heroTagline">Creative Educator &amp; Freelance Designer</p>
+     <div class="hero-subtitle" id="heroSubtitle"></div>
+     <p style="color: var(--text-secondary); margin-bottom: 2rem;" id="heroExperience">Teaching for 3 years • Freelance design, video editing &amp; social media (3–4 months)</p>
+     <div class="hero-cta"><a href="#portfolio" class="btn btn-primary" id="primaryCta"> <span>👁️</span> <span>View Work</span> </a> <button class="btn btn-secondary" id="secondaryCta" onclick="downloadResume()"> <span>📄</span> <span>Download Resume</span> </button>
+     </div>
     </div>
-  </section>
-<!-- Crafted Work -->
-<section id="work" class="py-16">
-  <div class="mx-auto max-w-7xl px-4 md:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold">Crafted Work</h2>
+   </div>
+  </section><!-- Who Am I Section -->
+  <section id="about">
+   <div class="container">
+    <h2 class="section-title">Who Am I</h2>
+    <div class="about-content">
+     <div class="about-image">
+      👨‍🏫
+     </div>
+     <div class="about-text">
+      <h3>Educator Turned Creative</h3>
+      <p id="aboutIntro">With 3 years of experience as a dedicated teacher, I've honed skills in communication, curriculum design, and connecting with people. Recently, I've ventured into the creative world, spending 3-4 months building expertise in graphic design, video editing, and social media management. I bring the same passion for learning and teaching to every creative project, combining analytical thinking with artistic expression.</p>
+      <div class="quick-facts">
+       <div class="fact-card">
+        <h4>Location</h4>
+        <p id="locationText">Mumbai, India</p>
+       </div>
+       <div class="fact-card">
+        <h4>Languages</h4>
+        <p id="languagesText">English, Hindi</p>
+       </div>
+       <div class="fact-card">
+        <h4>Availability</h4>
+        <p id="availabilityText">Available for freelance</p>
+       </div>
+      </div>
+      <div class="timeline">
+       <div class="timeline-chip">
+        3 yrs — Teaching
+       </div>
+       <div class="timeline-chip">
+        3–4 months — Freelance Designer &amp; Video Editor
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Skills Section -->
+  <section id="skills">
+   <div class="container">
+    <h2 class="section-title">My Abilities</h2>
+    <div class="skills-grid">
+     <div class="skill-card" data-progress="90">
+      <div class="skill-header">
+       <h3>Teaching &amp; Curriculum Design</h3><span class="skill-level">90%</span>
+      </div>
+      <p>Lesson planning, student engagement, educational content creation, presentation skills</p>
+      <div class="skill-bar">
+       <div class="skill-progress" style="--progress: 90%"></div>
+      </div>
+     </div>
+     <div class="skill-card" data-progress="80">
+      <div class="skill-header">
+       <h3>Graphic Design</h3><span class="skill-level">80%</span>
+      </div>
+      <p>Branding, posters, social creatives — Adobe Photoshop, Illustrator, Canva</p>
+      <div class="skill-bar">
+       <div class="skill-progress" style="--progress: 80%"></div>
+      </div>
+     </div>
+     <div class="skill-card" data-progress="75">
+      <div class="skill-header">
+       <h3>Video Editing</h3><span class="skill-level">75%</span>
+      </div>
+      <p>Promotional videos, reels, vlogs — Adobe Premiere Pro, After Effects</p>
+      <div class="skill-bar">
+       <div class="skill-progress" style="--progress: 75%"></div>
+      </div>
+     </div>
+     <div class="skill-card" data-progress="85">
+      <div class="skill-header">
+       <h3>Social Media Management</h3><span class="skill-level">85%</span>
+      </div>
+      <p>Content strategy, scheduling, engagement, analytics, community management</p>
+      <div class="skill-bar">
+       <div class="skill-progress" style="--progress: 85%"></div>
+      </div>
+     </div>
+     <div class="skill-card" data-progress="70">
+      <div class="skill-header">
+       <h3>Motion Graphics</h3><span class="skill-level">70%</span>
+      </div>
+      <p>Animated text, transitions, effects — After Effects, motion design principles</p>
+      <div class="skill-bar">
+       <div class="skill-progress" style="--progress: 70%"></div>
+      </div>
+     </div>
+     <div class="skill-card" data-progress="88">
+      <div class="skill-header">
+       <h3>Content Creation</h3><span class="skill-level">88%</span>
+      </div>
+      <p>Copywriting, caption writing, storytelling, content planning, brand voice</p>
+      <div class="skill-bar">
+       <div class="skill-progress" style="--progress: 88%"></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Portfolio Section -->
+  <section id="portfolio">
+   <div class="container">
+    <h2 class="section-title">Crafted Work</h2>
+    <div class="portfolio-filters"><button class="filter-btn active" data-filter="all">All</button> <button class="filter-btn" data-filter="design">Design</button> <button class="filter-btn" data-filter="video">Video</button> <button class="filter-btn" data-filter="social">Social</button> <button class="filter-btn" data-filter="education">Education</button>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid"><!-- Portfolio items will be generated by JavaScript -->
+    </div>
+   </div>
+  </section><!-- Videos Section -->
+  <section id="videos">
+   <div class="container">
+    <h2 class="section-title">Videos</h2>
+    <div class="video-grid">
+     <div class="video-card">
+      <div class="video-thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+       <div class="play-icon">
+        ▶
+       </div>
+      </div>
+      <div class="video-info">
+       <h3>Social Campaign Promo</h3>
+       <p>30-second promotional video for a local business social media campaign</p>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+       <div class="play-icon">
+        ▶
+       </div>
+      </div>
+      <div class="video-info">
+       <h3>Teaching Demo Reel</h3>
+       <p>Highlights from classroom sessions showcasing teaching methodology</p>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+       <div class="play-icon">
+        ▶
+       </div>
+      </div>
+      <div class="video-info">
+       <h3>Product Launch Video</h3>
+       <p>Motion graphics and animated explainer for product launch</p>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+       <div class="play-icon">
+        ▶
+       </div>
+      </div>
+      <div class="video-info">
+       <h3>Instagram Reels Collection</h3>
+       <p>Series of engaging short-form content for social media</p>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+       <div class="play-icon">
+        ▶
+       </div>
+      </div>
+      <div class="video-info">
+       <h3>Event Coverage</h3>
+       <p>Full event videography with cinematic editing and color grading</p>
+      </div>
+     </div>
+     <div class="video-card">
+      <div class="video-thumbnail" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+       <div class="play-icon">
+        ▶
+       </div>
+      </div>
+      <div class="video-info">
+       <h3>Educational Content</h3>
+       <p>Tutorial videos and educational content for online learning</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Frame Section -->
+  <section id="frame">
+   <div class="container">
+    <h2 class="section-title">In My Frame</h2>
+    <div class="frame-carousel">
+     <div class="frame-card">
+      <div class="frame-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+       📸
+      </div>
+      <div class="frame-caption">
+       Behind the scenes of a recent design project
+      </div>
+     </div>
+     <div class="frame-card">
+      <div class="frame-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+       🎨
+      </div>
+      <div class="frame-caption">
+       Workspace vibes during a creative brainstorm
+      </div>
+     </div>
+     <div class="frame-card">
+      <div class="frame-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+       🎬
+      </div>
+      <div class="frame-caption">
+       Video editing setup for a client project
+      </div>
+     </div>
+     <div class="frame-card">
+      <div class="frame-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+       📱
+      </div>
+      <div class="frame-caption">
+       Social media content creation in progress
+      </div>
+     </div>
+     <div class="frame-card">
+      <div class="frame-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+       📚
+      </div>
+      <div class="frame-caption">
+       Teaching materials and lesson planning
+      </div>
+     </div>
+     <div class="frame-card">
+      <div class="frame-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+       💻
+      </div>
+      <div class="frame-caption">
+       Late night design sessions
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Resume Section -->
+  <section id="resume">
+   <div class="container">
+    <h2 class="section-title">Resume Room</h2>
+    <div class="resume-content">
+     <div class="resume-stats">
+      <div class="stat-card">
+       <div class="stat-number" data-target="3">
+        0
+       </div>
+       <div class="stat-label">
+        Years Teaching
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-number" data-target="25">
+        0
+       </div>
+       <div class="stat-label">
+        Projects Completed
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-number" data-target="150">
+        0
+       </div>
+       <div class="stat-label">
+        Hours Video Edited
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-number" data-target="50">
+        0
+       </div>
+       <div class="stat-label">
+        Designs Created
+       </div>
+      </div>
+     </div>
+     <div class="resume-download">
+      <h3>Get My Full Resume</h3>
+      <p>Download a comprehensive PDF with my complete work history, education, and certifications.</p><button class="btn btn-primary" onclick="downloadResume()"> <span>📥</span> <span>Download Resume PDF</span> </button>
+      <div class="education-list">
+       <h4>Education &amp; Certifications</h4>
+       <div class="education-item"><strong>Bachelor of Education (B.Ed)</strong><br><span>University Name • 2018-2020</span>
+       </div>
+       <div class="education-item"><strong>Adobe Creative Suite Certified</strong><br><span>Photoshop, Illustrator, Premiere Pro • 2023</span>
+       </div>
+       <div class="education-item"><strong>Social Media Marketing Certificate</strong><br><span>Digital Marketing Institute • 2023</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact">
+   <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-content">
+     <div class="contact-info">
+      <h3 id="contactCta">Get In Touch</h3>
+      <p>Available for freelance projects and collaborations. Let's create something amazing together!</p>
+      <div class="social-links"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">📷</a> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">💼</a> <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube">📹</a> <a href="https://wa.me" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp">💬</a>
+      </div>
+     </div>
 
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+     <!-- ===== Formspree-connected Contact Form (replace YOUR_FORM_ID) ===== -->
+     <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <!-- Honeypot to reduce spam -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-      <!-- Work Card 1 -->
-      <div onclick="openModal('images/project/dashboard.webp')" 
-           class="group cursor-pointer rounded-2xl overflow-hidden border border-white/15 bg-white/10 hover:shadow-xl transition">
-        <img src="images/project/dashboard.webp" 
-             class="h-48 w-full object-cover group-hover:scale-105 transition"/>
-        <div class="p-5">
-          <h3 class="font-semibold">Dashboard UI</h3>
-          <p class="text-sm text-white/80">Click to view fullscreen.</p>
-        </div>
+      <div class="form-group"><label for="name">Name</label> <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group"><label for="email">Email</label> <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group"><label for="phone">Phone</label> <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="form-group"><label for="projectType">Project Type</label> <select id="projectType" name="projectType" required> <option value="">Select a type</option> <option value="design">Graphic Design</option> <option value="video">Video Editing</option> <option value="social">Social Media Management</option> <option value="teaching">Teaching/Training</option> <option value="other">Other</option> </select>
+      </div>
+      <div class="form-group"><label for="message">Message</label> <textarea id="message" name="message" required></textarea>
       </div>
 
-      <!-- Work Card 2 -->
-      <div onclick="openModal('images/project/poster.webp')" 
-           class="group cursor-pointer rounded-2xl overflow-hidden border border-white/15 bg-white/10 hover:shadow-xl transition">
-        <img src="images/project/poster.webp" 
-             class="h-48 w-full object-cover group-hover:scale-105 transition"/>
-        <div class="p-5">
-          <h3 class="font-semibold">Poster Design</h3>
-          <p class="text-sm text-white/80">Click to view fullscreen.</p>
-        </div>
-      </div>
+      <!-- Optional: redirect after successful submission -->
+      <!-- <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html"> -->
 
-      <!-- Work Card 3 -->
-      <div onclick="openModal('https://picsum.photos/1000/600?3')" 
-           class="group cursor-pointer rounded-2xl overflow-hidden border border-white/15 bg-white/10 hover:shadow-xl transition">
-        <img src="https://picsum.photos/400/250?3" 
-             class="h-48 w-full object-cover group-hover:scale-105 transition"/>
-        <div class="p-5">
-          <h3 class="font-semibold">Portfolio Website</h3>
-          <p class="text-sm text-white/80">Click to view fullscreen.</p>
-        </div>
-      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;"> <span>📧</span> <span>Send Message</span> </button>
+     </form>
+     <!-- ===== end form ===== -->
 
     </div>
-
-    <!-- View Showcase Button -->
-    <div class="mt-12 text-center">
-      <a href="#showcase" 
-         class="inline-block bg-purple-500 px-6 py-3 rounded-xl font-semibold hover:bg-purple-600 transition">
-        View Showcase
-      </a>
-    </div>
-
+   </div>
+  </section><!-- Footer -->
+  <footer>
+   <div class="container">
+    <p>© 2024 Kumar. All rights reserved. Built with passion and creativity.</p>
+   </div>
+  </footer><!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+   <div class="lightbox-content" id="lightboxContent"><button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <div id="lightboxInner"></div>
+   </div>
   </div>
-</section>
-<!-- 🎥 My Video Showcase -->
-<section id="videos" class="pb-6">
-  <div class="max-w-6xl mx-auto px-6">
-    <!-- Heading -->
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
-      Videos Work
-    </h2>
 
-    <!-- Horizontal Scroll Cards -->
-    <div class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar">
-      
-      <!-- Video Card 1 -->
-      <div class="min-w-[280px] h-[350px] rounded-2xl overflow-hidden shadow-lg">
-        <video class="w-full h-full object-cover" controls>
-          <source src="videos/intro.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <!-- Video Card 2 (YouTube Embed Example) -->
-      <div class="min-w-[280px] h-[350px] rounded-2xl overflow-hidden shadow-lg">
-        <iframe class="w-full h-full"
-          src="https://www.youtube.com/embed/VIDEO_ID"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <!-- Video Card 3 -->
-      <div class="min-w-[280px] h-[350px] rounded-2xl overflow-hidden shadow-lg">
-        <video class="w-full h-full object-cover" controls>
-          <source src="videos/demo.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <!-- Video Card 4 -->
-      <div class="min-w-[280px] h-[350px] rounded-2xl overflow-hidden shadow-lg">
-        <video class="w-full h-full object-cover" controls>
-          <source src="videos/creative.mp4" type="video/mp4">
-        </video>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Hide Scrollbar CSS -->
-<style>
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
-<!-- ===== IN MY FRAME (GALLERY) ===== -->
-  <section id="frame" class="py-16">
-  <div class="mx-auto max-w-7xl px-4 md:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold">In My Frame</h2>
-
-    <!-- Scrollable Gallery -->
-    <div class="mt-8 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
-      
-      <!-- Card 1 -->
-      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
-        <img src="images/frame/frameone.webp" 
-             onclick="openModal(this.src)" 
-             class="w-full h-full object-cover cursor-pointer"/>
-        <!-- Overlay Review -->
-        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
-          “"Thank you so much Sir 🙏 You taught me so well, and because of you I came first 🎉"”
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
-        <img src="images/frame/frametwo.webp" 
-             onclick="openModal(this.src)" 
-             class="w-full h-full object-cover cursor-pointer"/>
-        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
-          “Sir, you are the best teacher 😊 It’s only because of your hard work that I got 1st position. Thank you 🙏”
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
-        <img src="images/frame/framethree.webp" 
-             onclick="openModal(this.src)" 
-             class="w-full h-full object-cover cursor-pointer"/>
-        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
-          “Big thanks Sir 👏 You always supported me, that’s why I could come first. I am very happy 😊”
-        </div>
-      </div>
-  <!-- Card 4 -->
-      <div class="relative snap-center flex-shrink-0 w-72 h-96 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
-        <img src="images/frame/framefour.webp" 
-             onclick="openModal(this.src)" 
-             class="w-full h-full object-cover cursor-pointer"/>
-        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
-          “Sir, without your guidance and care I wouldn’t have been able to come first 🙏 Thank you so much ❤️”
-        </div>
-      </div>
-
-      <!-- Add more cards... -->
-
-    </div>
-  </div>
-  </section>
-  
-<!-- ===== Compitition  ===== -->
-  <section id="compitition" class="py-16">
-  <div class="mx-auto max-w-7xl px-4 md:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold">STUDENT'S COMPITITION</h2>
-
-    <!-- Scrollable Gallery -->
-    <div class="mt-8 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
-      
-      <!-- Card 1 -->
-      <div class="relative snap-center flex-shrink-0 w-96 h-72 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
-        <img src="images/compitition/compone.webp" 
-             onclick="openModal(this.src)" 
-             class="w-full h-full object-cover cursor-pointer"/>
-        <!-- Overlay Review -->
-        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
-          "Thank you so much Sir ❤️ This victory is not only mine, it belongs to your teaching too 🙏"      </div>
-      </div>
-       <!-- Card 2 -->
-      <div class="relative snap-center flex-shrink-0 w-96 h-72 rounded-2xl overflow-hidden border border-white/15 hover:shadow-xl transition">
-        <img src="images/compitition/comp2.webp" 
-             onclick="openModal(this.src)" 
-             class="w-full h-full object-cover cursor-pointer"/>
-        <!-- Overlay Review -->
-        <div class="absolute bottom-3 left-3 right-3 bg-white/90 text-gray-900 text-sm p-3 rounded-lg shadow">
-        "Winning this competition feels amazing 🏆 Thank you Sir for guiding me step by step 🙏"
-          
-        </div>
-      </div>
-    </section>
-      
-  <!-- ===== RESUME ROOM ===== -->
-  <section id="resume" class="py-16">
-    <div class="mx-auto max-w-7xl px-4 md:px-6">
-      <h2 class="reveal text-3xl md:text-4xl font-bold text-center">Resume Room</h2>
-
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <!-- Experience -->
-        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-          <h3 class="font-semibold text-brand-200 mb-4">Experience</h3>
-          <div class="space-y-4 text-sm">
-            <div>
-              <div class="flex items-center justify-between">
-                <strong>Teacher & Designer</strong>
-                <span class="text-white/70">2023 — Present</span>
-              </div>
-              <p class="text-white/80">Created course visuals, taught MS Office & design tools, and built mini web projects.</p>
-            </div>
-            <div>
-              <div class="flex items-center justify-between">
-                <strong>Freelance Designer</strong>
-                <span class="text-white/70">2025</span>
-              </div>
-              <p class="text-white/80">Logos, posters, certificates, and simple one-page sites for local institutes.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-          <h3 class="font-semibold text-brand-200 mb-4">Education</h3>
-          <ul class="space-y-3 text-sm">
-            <li><strong>ADCA</strong> — Advanced Diploma in Computer Applications</li>
-            <li><strong>Graphic Tools:</strong> Photoshop, CorelDRAW, Canva</li>
-            <li><strong>B.A (present )</strong> History & political,</li>
-          </ul>
-
-          <a href="https://drive.google.com/file/d/198Y5cL97PM3IAvgCUiXY1n1t_EuqjpHF/view?usp=drivesdk" class="mt-5 inline-flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2 font-semibold shadow-glow hover:bg-brand-600 transition">
-            <i data-lucide="download"></i> Download Full Resume
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- Fullscreen Modal -->
-<div id="imageModal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-  <span class="absolute top-5 right-8 text-white text-4xl cursor-pointer" onclick="closeModal()">&times;</span>
-  <img id="modalImage" src="" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg"/>
-</div>
-
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="py-16">
-    <div class="mx-auto max-w-7xl px-4 md:px-6">
-      <h2 class="reveal text-3xl md:text-4xl font-bold text-center">Let’s Talk</h2>
-
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
-        <!-- Illustration / map placeholder -->
-        <div class="reveal col-span-2 rounded-2xl  bg-white/10 backdrop-blur-xl h-96 md:h-auto flex items-center justify-center">
-          <img src="images/contact.webp" alt="Contact illustration" class="h-full w-full object-cover rounded-2xl opacity-80">
-        </div>
-
-        <!-- Contact info + form -->
-        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-          <h3 class="font-semibold text-brand-200 mb-4">Contact Information</h3>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-center gap-2"><i data-lucide="phone"><a href="tel:7683040561"></i> +91-7683040561</li></a>
-            <li class="flex items-center gap-2"><i data-lucide="mail"><a href="mailto:javed.portfoli.1@gamil.com"></i> javed.portfolio.1@gmail.com</li></a>
-            <li class="flex items-center gap-2"><i data-lucide="map-pin"></i> Delhi, India</li>
-          <div class="flex gap-4 mt-4">
-  <!-- WhatsApp -->
-  <div class="flex gap-4 mt-4">
-  <!-- WhatsApp -->
-  <a href="https://wa.me/917683040561" target="_blank" 
-     class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition shadow-lg">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
-      <path d="M20.52 3.48A11.79 11.79 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.98L0 24l6.19-1.63A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 21.82c-2.08 0-4.09-.56-5.84-1.61l-.42-.25-3.67.97.98-3.58-.27-.43A9.82 9.82 0 0 1 2.18 12C2.18 6.62 6.62 2.18 12 2.18c2.63 0 5.1 1.02 6.95 2.86A9.78 9.78 0 0 1 21.82 12c0 5.38-4.44 9.82-9.82 9.82zm5.38-7.37c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.48s1.08 2.87 1.23 3.07c.15.2 2.12 3.25 5.14 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.08-.12-.28-.2-.58-.35z"/>
-    </svg>
-  </a>
-  <!-- Twitter -->
-  <a href="https://twtr.openinapp.co/hpng5" target="_blank" 
-     class="flex items-center justify-center w-10 h-10 rounded-full bg-sky-500 hover:bg-sky-600 transition shadow-lg">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
-      <path d="M23.954 4.57c-.885.392-1.83.656-2.825.775a4.932 4.932 0 0 0 2.163-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482A13.978 13.978 0 0 1 1.671 3.149a4.92 4.92 0 0 0 1.524 6.574c-.8-.025-1.55-.246-2.21-.616v.061a4.926 4.926 0 0 0 3.946 4.827c-.417.113-.855.171-1.312.171-.32 0-.634-.03-.936-.086a4.935 4.935 0 0 0 4.604 3.42A9.868 9.868 0 0 1 .96 19.54a13.94 13.94 0 0 0 7.548 2.213c9.057 0 14.01-7.514 14.01-14.01 0-.213-.004-.425-.014-.637a10.012 10.012 0 0 0 2.45-2.537z"/>
-    </svg>
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://insta.oia.bio/jd" target="_blank" 
-     class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 hover:opacity-90 transition shadow-lg">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
-      <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.1 4.7.3 3.9.6c-.9.3-1.7.7-2.4 1.4C.8 2.6.3 3.4.1 4.3.1 5.1 0 6.1 0 7.4 0 8.7 0 9.1 0 12s0 3.3.1 4.6c.1 1.3.3 2.3.6 3.1.3.9.7 1.7 1.4 2.4.7.7 1.5 1.1 2.4 1.4.9.3 1.8.5 3.1.6 1.3.1 1.7.1 4.6.1s3.3 0 4.6-.1c1.3-.1 2.3-.3 3.1-.6.9-.3 1.7-.7 2.4-1.4.7-.7 1.1-1.5 1.4-2.4.3-.9.5-1.8.6-3.1.1-1.3.1-1.7.1-4.6s0-3.3-.1-4.6c-.1-1.3-.3-2.3-.6-3.1-.3-.9-.7-1.7-1.4-2.4C20.1.8 19.3.4 18.4.1c-.9-.3-1.8-.5-3.1-.6C13.3 0 12.9 0 12 0z"/>
-      <path d="M12 5.8A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.6a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/>
-    </svg>
-  </a>
-
-<!-- YouTube -->
-<a href="https://youtube.com/YOUR_CHANNEL" target="_blank"
-   class="flex items-center justify-center w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 transition shadow-lg">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
-    <path d="M23.498 6.186a2.97 2.97 0 0 0-2.09-2.103C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.408.583a2.97 2.97 0 0 0-2.09 2.103A31.65 31.65 0 0 0 0 12a31.65 31.65 0 0 0 .502 5.814 2.97 2.97 0 0 0 2.09 2.103C4.495 20.5 12 20.5 12 20.5s7.505 0 9.408-.583a2.97 2.97 0 0 0 2.09-2.103A31.65 31.65 0 0 0 24 12a31.65 31.65 0 0 0-.502-5.814zM9.75 15.02v-6.04L15.5 12l-5.75 3.02z"/>
-  </svg>
-</a>
-
-  <!-- LinkedIn -->
-  <a href="https://linkedin.openinapp.co/eodch" target="_blank" 
-     class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-700 hover:bg-blue-800 transition shadow-lg">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-white">
-      <path d="M20.45 20.45h-3.554v-5.357c0-1.278-.023-2.922-1.78-2.922-1.782 0-2.054 1.392-2.054 2.83v5.449H9.507V9h3.414v1.561h.047c.476-.9 1.637-1.848 3.37-1.848 3.604 0 4.27 2.372 4.27 5.455v6.287zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.11 20.45H3.563V9h3.548v11.45zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.207 24 24 23.226 24 22.271V1.729C24 .774 23.207 0 22.225 0z"/>
-    </svg>
-  </a>
-</div>
-          </ul>
-
-          <form id="contact-form" action="https://formspree.io/f/mjkenbjz" method="POST" class="mt-6 space-y-3">
-  <!-- Name -->
-  <input 
-    type="text" 
-    name="name" 
-    required
-    class="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-2 
-           placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand-400" 
-    placeholder="Your Name"/>
-
-  <!-- Email -->
-  <input 
-    type="email" 
-    name="email" 
-    required
-    class="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-2 
-           placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand-400" 
-    placeholder="Your Email"/>
-
-  <!-- Message -->
-  <textarea 
-    name="message" 
-    rows="4" 
-    required
-    class="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-2 
-           placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand-400" 
-    placeholder="Your Message"></textarea>
-
-  <!-- Submit -->
-  <button 
-    type="submit"
-    class="w-full rounded-xl bg-brand-500 px-4 py-2 font-semibold shadow-glow 
-           hover:bg-brand-600 transition">
-    Send Message
-  </button>
-
-  <!-- Success / Error messages -->
-  <p id="form-status" class="text-sm mt-2 text-center"></p>
-</form>
-
-<script>
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // default submit rok do
-    const data = new FormData(form);
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        status.innerHTML = "✅ Thanks! Your message has been sent.";
-        status.className = "text-green-400 text-sm mt-2 text-center";
-        form.reset(); // form clear
-      } else {
-        status.innerHTML = "❌ Oops! Something went wrong.";
-        status.className = "text-red-400 text-sm mt-2 text-center";
-      }
-    } catch (error) {
-      status.innerHTML = "⚠️ Network error. Please try again.";
-      status.className = "text-yellow-400 text-sm mt-2 text-center";
-    }
-  });
-</script>        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="border-t border-white/10">
-    <div class="mx-auto max-w-7xl px-4 md:px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
-      <p>© 2025 Javed Portfolio. All rights reserved.</p>
-      <div class="mt-3 md:mt-0 flex items-center gap-3">
-        <a href="#" class="hover:text-white">Privacy</a>
-        <span class="opacity-40">•</span>
-        <a href="#" class="hover:text-white">Terms</a>
-        <span class="opacity-40">•</span>
-        <a href="#" class="hover:text-white">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== SCRIPTS ===== -->
   <script>
-  // Icons
-  lucide.createIcons();
+    const defaultConfig = {
+      background_color: '#fafafa',
+      surface_color: '#ffffff',
+      text_color: '#1a1a1a',
+      accent_color: '#f72585',
+      font_family: 'Inter',
+      font_size: 16,
+      site_name: 'Kumar',
+      site_tagline: 'Creative Educator & Freelance Designer',
+      hero_subtitle: 'Teaching for 3 years • Freelance design, video editing & social media (3–4 months)',
+      about_intro: 'With 3 years of experience as a dedicated teacher, I\'ve honed skills in communication, curriculum design, and connecting with people. Recently, I\'ve ventured into the creative world, spending 3-4 months building expertise in graphic design, video editing, and social media management. I bring the same passion for learning and teaching to every creative project, combining analytical thinking with artistic expression.',
+      location_text: 'Mumbai, India',
+      languages_text: 'English, Hindi',
+      availability_text: 'Available for freelance',
+      primary_cta: 'View Work',
+      secondary_cta: 'Download Resume',
+      contact_cta: 'Get In Touch'
+    };
 
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-
-  // Close menu when a link is clicked
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden'); // force close
-    });
-  });
-    // Scroll-reveal with IntersectionObserver
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
+    async function onConfigChange(config) {
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, sans-serif';
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      document.documentElement.style.setProperty('--bg', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--surface', config.surface_color || defaultConfig.surface_color);
+      document.documentElement.style.setProperty('--text', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--accent', config.accent_color || defaultConfig.accent_color);
+      
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontSize = `${baseSize}px`;
+      
+      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      headings.forEach(heading => {
+        heading.style.fontFamily = `'Poppins', ${customFont}, ${baseFontStack}`;
       });
-    }, { threshold: 0.15 });
+      
+      document.querySelectorAll('.section-title').forEach(el => {
+        el.style.fontSize = `${baseSize * 2.5}px`;
+      });
+      
+      document.querySelectorAll('p, li, label, input, textarea, select, button').forEach(el => {
+        el.style.fontSize = `${baseSize}px`;
+      });
+      
+      const siteName = config.site_name || defaultConfig.site_name;
+      document.getElementById('nav-name').textContent = siteName;
+      document.getElementById('heroName').textContent = siteName;
+      document.querySelector('.logo-icon').textContent = siteName.charAt(0).toUpperCase();
+      
+      document.getElementById('heroTagline').textContent = config.site_tagline || defaultConfig.site_tagline;
+      document.getElementById('heroExperience').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('aboutIntro').textContent = config.about_intro || defaultConfig.about_intro;
+      document.getElementById('locationText').textContent = config.location_text || defaultConfig.location_text;
+      document.getElementById('languagesText').textContent = config.languages_text || defaultConfig.languages_text;
+      document.getElementById('availabilityText').textContent = config.availability_text || defaultConfig.availability_text;
+      
+      const primaryCtaText = config.primary_cta || defaultConfig.primary_cta;
+      document.querySelector('#primaryCta span:last-child').textContent = primaryCtaText;
+      
+      const secondaryCtaText = config.secondary_cta || defaultConfig.secondary_cta;
+      document.querySelector('#secondaryCta span:last-child').textContent = secondaryCtaText;
+      
+      document.getElementById('contactCta').textContent = config.contact_cta || defaultConfig.contact_cta;
+    }
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    function openModal(imgSrc) {
-    document.getElementById("modalImage").src = imgSrc;
-    document.getElementById("imageModal").classList.remove("hidden");
-  }
-  function closeModal() {
-    document.getElementById("imageModal").classList.add("hidden");
-  }
-</script>
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['site_name', config.site_name || defaultConfig.site_name],
+          ['site_tagline', config.site_tagline || defaultConfig.site_tagline],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['about_intro', config.about_intro || defaultConfig.about_intro],
+          ['location_text', config.location_text || defaultConfig.location_text],
+          ['languages_text', config.languages_text || defaultConfig.languages_text],
+          ['availability_text', config.availability_text || defaultConfig.availability_text],
+          ['primary_cta', config.primary_cta || defaultConfig.primary_cta],
+          ['secondary_cta', config.secondary_cta || defaultConfig.secondary_cta],
+          ['contact_cta', config.contact_cta || defaultConfig.contact_cta]
+        ])
+      });
+    }
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // Animated hero subtitle
+    const subtitles = [
+      'Graphic Design',
+      'Video Editing',
+      'Social Media',
+      'Teaching'
+    ];
+    let subtitleIndex = 0;
+    const heroSubtitle = document.getElementById('heroSubtitle');
+
+    function cycleSubtitle() {
+      heroSubtitle.style.opacity = '0';
+      setTimeout(() => {
+        heroSubtitle.textContent = subtitles[subtitleIndex];
+        heroSubtitle.style.opacity = '1';
+        subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+      }, 300);
+    }
+
+    setInterval(cycleSubtitle, 3000);
+    cycleSubtitle();
+
+    // Animated particles
+    const heroBg = document.getElementById('heroBg');
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.width = `${Math.random() * 10 + 5}px`;
+      particle.style.height = particle.style.width;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 20}s`;
+      particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
+      heroBg.appendChild(particle);
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Skill card animations
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.skill-card').forEach(card => {
+      skillObserver.observe(card);
+    });
+
+    // Portfolio data
+    const portfolioItems = [
+      {
+        id: 1,
+        title: 'Brand Identity Design',
+        category: 'design',
+        tags: ['Branding', 'Logo', 'Visual Identity'],
+        description: 'Complete brand identity package for a local startup',
+        icon: '🎨',
+        gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        tools: ['Adobe Illustrator', 'Photoshop'],
+        details: 'Created a comprehensive brand identity including logo, color palette, typography, and brand guidelines. The client wanted a modern, professional look that would appeal to young professionals.',
+        result: 'Brand recognition increased by 40% in first quarter'
+      },
+      {
+        id: 2,
+        title: 'Social Media Campaign',
+        category: 'social',
+        tags: ['Instagram', 'Content Strategy', 'Engagement'],
+        description: '30-day social media campaign with 15+ posts',
+        icon: '📱',
+        gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        tools: ['Canva', 'Later', 'Instagram'],
+        details: 'Developed and executed a month-long social media campaign focusing on audience engagement and brand awareness. Created content calendar, designed posts, and managed community interactions.',
+        result: '250% increase in engagement, 1000+ new followers'
+      },
+      {
+        id: 3,
+        title: 'Product Launch Video',
+        category: 'video',
+        tags: ['Motion Graphics', 'Editing', 'Animation'],
+        description: 'Animated product explainer with motion graphics',
+        icon: '🎬',
+        gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        tools: ['Premiere Pro', 'After Effects'],
+        details: 'Produced a 60-second product launch video featuring kinetic typography, smooth transitions, and product demonstrations. Included voiceover and background music.',
+        result: '50K+ views in first week'
+      },
+      {
+        id: 4,
+        title: 'Educational Course Materials',
+        category: 'education',
+        tags: ['Teaching', 'Curriculum', 'Visual Aids'],
+        description: 'Complete course materials with infographics',
+        icon: '📚',
+        gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+        tools: ['PowerPoint', 'Canva', 'Google Slides'],
+        details: 'Designed comprehensive teaching materials for a 12-week course including presentation slides, handouts, and visual learning aids.',
+        result: '95% student satisfaction rating'
+      },
+      {
+        id: 5,
+        title: 'Restaurant Menu Design',
+        category: 'design',
+        tags: ['Print Design', 'Typography', 'Layout'],
+        description: 'Modern menu design for upscale restaurant',
+        icon: '🍽️',
+        gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+        tools: ['Illustrator', 'InDesign'],
+        details: 'Created elegant menu design with careful attention to typography, spacing, and food photography placement. Designed both print and digital versions.',
+        result: 'Featured in local design awards'
+      },
+      {
+        id: 6,
+        title: 'Instagram Reels Series',
+        category: 'video',
+        tags: ['Short Form', 'Editing', 'Trending'],
+        description: '10-part educational reels series',
+        icon: '📹',
+        gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+        tools: ['CapCut', 'Premiere Pro'],
+        details: 'Created engaging short-form educational content optimized for Instagram Reels. Each video under 60 seconds with captions and trending audio.',
+        result: 'Average 15K views per reel'
+      },
+      {
+        id: 7,
+        title: 'Event Poster Series',
+        category: 'design',
+        tags: ['Poster', 'Event', 'Print'],
+        description: 'Concert promotional materials',
+        icon: '🎪',
+        gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+        tools: ['Photoshop', 'Illustrator'],
+        details: 'Designed eye-catching event posters for a music festival including main poster, social media variants, and merchandise designs.',
+        result: '1000+ ticket sales attributed to campaign'
+      },
+      {
+        id: 8,
+        title: 'YouTube Channel Branding',
+        category: 'social',
+        tags: ['YouTube', 'Thumbnails', 'Branding'],
+        description: 'Complete channel branding and thumbnails',
+        icon: '📺',
+        gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+        tools: ['Photoshop', 'Canva'],
+        details: 'Created channel banner, profile image, intro animation, and custom thumbnail template for educational YouTube channel.',
+        result: 'Subscriber growth rate increased 3x'
+      }
+    ];
+
+    // Render portfolio items
+    function renderPortfolio(filter = 'all') {
+      const grid = document.getElementById('portfolioGrid');
+      const filtered = filter === 'all' 
+        ? portfolioItems 
+        : portfolioItems.filter(item => item.category === filter);
+      
+      grid.innerHTML = filtered.map(item => `
+        <div class="portfolio-card" onclick="openLightbox(${item.id})">
+          <div class="portfolio-image" style="background: ${item.gradient};">
+            ${item.icon}
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tags">
+              ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderPortfolio();
+
+    // Portfolio filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPortfolio(btn.dataset.filter);
+      });
+    });
+
+    // Lightbox functionality
+    function openLightbox(id) {
+      const item = portfolioItems.find(i => i.id === id);
+      if (!item) return;
+
+      const lightboxInner = document.getElementById('lightboxInner');
+      lightboxInner.innerHTML = `
+        <div class="lightbox-image" style="background: ${item.gradient};">
+          ${item.icon}
+        </div>
+        <h2>${item.title}</h2>
+        <div class="lightbox-meta">
+          ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <p>${item.details}</p>
+        <h3>Tools Used</h3>
+        <div class="lightbox-tools">
+          ${item.tools.map(tool => `<span class="tool-tag">${tool}</span>`).join('')}
+        </div>
+        <h3>Result</h3>
+        <p>${item.result}</p>
+      `;
+
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Close lightbox on background click
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') {
+        closeLightbox();
+      }
+    });
+
+    // Animated counters
+    function animateCounter(element) {
+      const target = parseInt(element.dataset.target);
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          element.textContent = target + (target === 3 ? '' : '+');
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current);
+        }
+      }, 16);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.target.textContent === '0') {
+          animateCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(counter => {
+      counterObserver.observe(counter);
+    });
+
+    // Download resume function
+    function downloadResume() {
+      const message = document.createElement('div');
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--surface);
+        padding: 2rem 3rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px var(--shadow-hover);
+        z-index: 3000;
+        text-align: center;
+        max-width: 400px;
+      `;
+      message.innerHTML = `
+        <h3 style="margin-bottom: 1rem; color: var(--text); font-family: 'Poppins', sans-serif;">Resume Download</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">In a real implementation, this would download a PDF resume. For this demo, please contact Kumar directly for the resume.</p>
+        <button onclick="this.parentElement.remove()" class="btn btn-primary">Got it!</button>
+      `;
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        if (message.parentElement) {
+          message.remove();
+        }
+      }, 5000);
+    }
+
+    // ===== Formspree AJAX handler (connected) =====
+    (function() {
+      const form = document.getElementById('contactForm');
+
+      function showToast(text, ok = true) {
+        const existing = document.getElementById('form-toaster');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.id = 'form-toaster';
+        toast.role = 'status';
+        toast.style.cssText = [
+          'position: fixed',
+          'top: 90px',
+          'left: 50%',
+          'transform: translateX(-50%)',
+          'z-index: 9999',
+          'padding: 14px 22px',
+          'border-radius: 999px',
+          'font-weight: 700',
+          'font-size: 15px',
+          'box-shadow: 0 10px 30px rgba(0,0,0,0.3)'
+        ].join(';');
+
+        if (ok) {
+          toast.style.background = 'linear-gradient(135deg,#28a745 0%,#20c997 100%)';
+          toast.style.color = '#fff';
+        } else {
+          toast.style.background = 'linear-gradient(135deg,#f44336 0%,#e53935 100%)';
+          toast.style.color = '#fff';
+        }
+
+        toast.textContent = text;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => { toast.remove(); }, 400);
+        }, 4000);
+      }
+
+      if (!form) return;
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // basic validation
+        const name = form.querySelector('[name="name"]').value.trim();
+        const email = form.querySelector('[name="email"]').value.trim();
+        const project = form.querySelector('[name="projectType"]').value;
+        const message = form.querySelector('[name="message"]').value.trim();
+
+        if (!name || !email || !project || !message) {
+          showToast('Please fill all required fields', false);
+          return;
+        }
+
+        // honeypot check
+        if (form.querySelector('[name="_gotcha"]').value) {
+          // likely bot - silently ignore
+          return;
+        }
+
+        const submitBtn = form.querySelector('[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+
+        try {
+          // Use FormData to submit
+          const data = new FormData(form);
+          // Add a subject so email inbox is clearer (optional)
+          data.append('_subject', 'New lead from portfolio site');
+
+          const action = form.getAttribute('action') || 'https://formspree.io/f/YOUR_FORM_ID';
+          const resp = await fetch(action, {
+            method: 'POST',
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (resp.ok) {
+            showToast('✓ Message sent — I will contact you soon.', true);
+            form.reset();
+          } else {
+            // try to parse response for errors
+            let json = null;
+            try { json = await resp.json(); } catch (err) {}
+            console.warn('Formspree response:', resp.status, json);
+            showToast('Submission failed. Please try again later.', false);
+          }
+        } catch (err) {
+          console.error('Form submission error:', err);
+          showToast('Network error — trying fallback...', false);
+          // fallback: native submit (this will reload)
+          setTimeout(() => form.submit(), 800);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      });
+    })();
+    // ===== end Formspree handler =====
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Hide/show navigation on scroll
+    let lastScroll = 0;
+    const nav = document.getElementById('nav');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0) {
+        nav.style.transform = 'translateY(0)';
+        return;
+      }
+      
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        nav.style.transform = 'translateY(-100%)';
+      } else {
+        nav.style.transform = 'translateY(0)';
+      }
+      
+      lastScroll = currentScroll;
+    });
   </script>
-</body>
+
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a073b7162a2a82d',t:'MTc2MzQ2NjQzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
